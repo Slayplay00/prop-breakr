@@ -1,0 +1,14 @@
+body { background-color: #0D1117; }
+.animated-grid-container { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+.animated-grid-container::before { content: ''; position: absolute; inset: 0; width: 100%; height: 100%; --grid-size: 30px; --grid-color: #161B22; background-image: linear-gradient(to right, var(--grid-color) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px); background-size: var(--grid-size) var(--grid-size); mask-image: linear-gradient(to bottom, transparent, black 100px, black); -webkit-mask-image: linear-gradient(to bottom, transparent, black 100px, black); }
+.animated-grid-container::after { content: ''; position: absolute; inset: 0; width: 100%; height: 100%; --grid-size: 30px; --grid-color-luminous: rgba(35, 134, 54, 0.4); background-image: linear-gradient(to right, var(--grid-color-luminous) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-color-luminous) 1px, transparent 1px); background-size: var(--grid-size) var(--grid-size); mask-image: radial-gradient( ellipse 300px 300px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100% ); -webkit-mask-image: radial-gradient( ellipse 300px 300px at var(--mouse-x) var(--mouse-y), black 10%, transparent 100% ); opacity: 0; transition: opacity 0.5s ease; }
+body:hover .animated-grid-container::after { opacity: 1; }
+@keyframes blink { 50% { opacity: 0; } }
+.cursor-blink { animation: blink 1s step-end infinite; }
+.blended-border { position: relative; border: 1px solid transparent; }
+.blended-border::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+/* Utility to replace inline styles used in React components */
+.line-horizontal { height: 2px; transform: translateY(-50%); z-index: -1; }
+.timeline-track { top: 2rem; left: 0; width: 100%; }
+.timeline-progress { top: 2rem; left: 25%; width: 50%; }
+.container { max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }

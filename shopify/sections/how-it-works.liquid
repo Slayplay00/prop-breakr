@@ -1,0 +1,39 @@
+<section class="py-20 bg-transparent">
+  <div class="container">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white">Get Funded in 3 Simple Steps</h2>
+      <p class="text-lg text-brand-text-light mt-4 max-w-2xl mx-auto">Our process is designed to be fast, secure, and completely transparent.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-12 relative">
+      <div class="absolute timeline-track line-horizontal bg-brand-light-gray hidden md:block"></div>
+      <div class="absolute timeline-progress line-horizontal bg-brand-primary hidden md:block"></div>
+      {% assign steps = [
+        {"title":"Choose Your Plan","desc":"Pick the account size that fits your goals.","icon":"rocket","num":1},
+        {"title":"We Pass The Challenge","desc":"Our experts handle the evaluation for you.","icon":"chart","num":2},
+        {"title":"Receive Your Funded Account","desc":"Start trading with real capital.","icon":"badge","num":3}
+      ] %}
+      {% for s in steps %}
+      <div class="flex flex-col items-center text-center">
+        <div class="relative flex items-center justify-center w-16 h-16 bg-brand-light-gray border-2 border-brand-primary rounded-full mb-4 text-brand-primary">
+          {% if s.icon == 'rocket' %}
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          {% elsif s.icon == 'chart' %}
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18"/></svg>
+          {% else %}
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+          {% endif %}
+          <span class="absolute -top-2 -right-2 bg-brand-primary text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center ring-2 ring-brand-dark">{{ s.num }}</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">{{ s.title }}</h3>
+        <p class="text-brand-text-light">{{ s.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "How It Works",
+  "settings": []
+}
+{% endschema %}

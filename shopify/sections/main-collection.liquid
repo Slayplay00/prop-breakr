@@ -1,0 +1,21 @@
+<section class="py-12">
+  <div class="container">
+    <h1 class="text-3xl font-bold text-white mb-6">{{ collection.title }}</h1>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for product in collection.products %}
+      <a class="bg-brand-gray/40 backdrop-blur-lg p-4 rounded-lg blended-border block" href="{{ product.url }}">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}" class="w-full rounded-md mb-3"/>
+        {% endif %}
+        <div class="flex items-center justify-between">
+          <h2 class="text-white font-semibold">{{ product.title }}</h2>
+          <span class="text-brand-text-light">{{ product.price | money }}</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Collection", "settings": [] }
+{% endschema %}

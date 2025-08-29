@@ -1,0 +1,1 @@
+{ "sections": { "features": { "type": "features" }, "cta": { "type": "cta" } }, "order": ["features","cta"] }

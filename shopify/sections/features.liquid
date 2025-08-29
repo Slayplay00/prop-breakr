@@ -1,0 +1,39 @@
+{% assign features = [
+  {"icon":"users","title":"Expert Trading Team","desc":"Led by veteran traders who understand prop firm evaluations inside out."},
+  {"icon":"check","title":"98% Success Rate","desc":"A proven track record of passing evaluations across top firms."},
+  {"icon":"clock","title":"Fast Turnaround","desc":"Move from evaluation to funded in record time with our streamlined process."},
+  {"icon":"shield","title":"Secure & Confidential","desc":"Your data and strategy are protected with enterprise-grade security."}
+] %}
+<section class="py-20 bg-transparent">
+  <div class="container">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white">The PropBreakr Advantage</h2>
+      <p class="text-lg text-brand-text-light mt-4 max-w-2xl mx-auto">We're not just a service; we're your partners in trading success.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {% for f in features %}
+      <div class="bg-brand-gray/40 backdrop-blur-lg p-6 rounded-lg blended-border transition-all duration-300 hover:border-brand-primary hover:shadow-2xl hover:shadow-brand-primary/10 transform hover:-translate-y-1">
+        <div class="flex items-center justify-center w-12 h-12 bg-brand-light-gray rounded-md mb-5 text-brand-primary">
+          {% if f.icon == 'users' %}
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m9 3.87V20M12 14a4 4 0 100-8 4 4 0 000 8z"/></svg>
+          {% elsif f.icon == 'check' %}
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          {% elsif f.icon == 'clock' %}
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          {% elsif f.icon == 'shield' %}
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l7 4v6a9 9 0 11-14 0V6l7-4z"/></svg>
+          {% endif %}
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">{{ f.title }}</h3>
+        <p class="text-brand-text-light">{{ f.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Features",
+  "settings": []
+}
+{% endschema %}
