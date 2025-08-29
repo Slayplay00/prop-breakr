@@ -1,0 +1,28 @@
+<section class="py-12">
+  <div class="container grid md:grid-cols-2 gap-10">
+    <div>
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | img_url: '1024x' }}" alt="{{ product.title | escape }}" class="w-full rounded-lg" />
+      {% endif %}
+    </div>
+    <div>
+      <h1 class="text-3xl font-bold text-white">{{ product.title }}</h1>
+      <div class="text-brand-text-light prose prose-invert max-w-none my-4">{{ product.description }}</div>
+      {% if product.available %}
+        <form method="post" action="/cart/add">
+          <select name="id" class="w-full bg-brand-light-gray rounded-md p-3 text-white mb-4">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="bg-brand-primary text-white font-bold px-6 py-3 rounded-lg hover:bg-brand-primary-hover">Add to cart</button>
+        </form>
+      {% else %}
+        <p class="text-brand-text-light">Sold out</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Product", "settings": [] }
+{% endschema %}

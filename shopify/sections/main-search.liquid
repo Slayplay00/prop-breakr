@@ -1,0 +1,29 @@
+<section class="py-12">
+  <div class="container">
+    <form action="/search" method="get" class="mb-6 flex gap-2">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search products" class="flex-1 bg-brand-light-gray rounded-md p-3 text-white" />
+      <button class="bg-brand-primary text-white px-4 py-2 rounded">Search</button>
+    </form>
+    {% if search.performed %}
+      <p class="text-brand-text-light mb-4">{{ search.results_count }} results for "{{ search.terms }}"</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+          <a class="bg-brand-gray/40 backdrop-blur-lg p-4 rounded-lg blended-border block" href="{{ item.url }}">
+            {% if item.featured_image %}
+              <img src="{{ item.featured_image | img_url: '600x' }}" alt="{{ item.title | escape }}" class="w-full rounded-md mb-3"/>
+            {% endif %}
+            <div class="flex items-center justify-between">
+              <h2 class="text-white font-semibold">{{ item.title }}</h2>
+              <span class="text-brand-text-light">{{ item.price | money }}</span>
+            </div>
+          </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+{ "name": "Search", "settings": [] }
+{% endschema %}

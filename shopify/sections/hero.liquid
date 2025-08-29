@@ -1,0 +1,55 @@
+<section class="relative py-20 md:py-32 bg-transparent overflow-hidden">
+  <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/20 via-brand-dark/80 to-brand-dark"></div>
+  <div class="container text-center relative z-10">
+    <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
+      Your Prop Firm Challenge <span class="text-brand-primary" id="typedText">Passed. Funded. Fast.</span>
+      <span class="cursor-blink inline-block w-1 h-10 md:h-14 bg-brand-primary ml-2 translate-y-2 align-middle" aria-hidden="true"></span>
+    </h1>
+    <p class="text-lg md:text-xl text-brand-text-light max-w-3xl mx-auto mb-8">
+      We expertly navigate and pass your prop firm evaluations, so you can focus on what you do best: trading with serious capital.
+    </p>
+    <div class="flex justify-center space-x-4">
+      <a href="/pages/pricing" class="bg-brand-primary text-white font-bold px-8 py-4 rounded-lg hover:bg-brand-primary-hover transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-brand-primary/30">Get Funded Now</a>
+      <a href="/pages/how-it-works" class="text-brand-text-light hover:text-white transition-colors duration-300">How It Works</a>
+    </div>
+    <div class="mt-16 max-w-3xl mx-auto">
+      <div class="relative h-28 md:h-24">
+        <div class="absolute inset-0 flex flex-col items-center justify-center" id="testimonialRotator">
+          <p class="text-lg italic text-brand-text" data-quote>"Fast and reliable—got funded in two weeks!"</p>
+          <p class="mt-3 font-semibold text-white" data-cite>- Alex R., <span class="font-normal text-brand-text-light">Forex Trader</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var phrases = ['Passed. Funded. Fast.', 'Done Right. First Try.', 'Capital Unlocked.'];
+      var el = document.getElementById('typedText');
+      if (!el) return;
+      var i=0, j=0, deleting=false;
+      function tick(){
+        var current = phrases[i];
+        if (!deleting) { j++; } else { j--; }
+        el.textContent = current.slice(0, j);
+        if (!deleting && j === current.length) { deleting = true; setTimeout(tick, 1200); return; }
+        if (deleting && j === 0) { deleting = false; i = (i+1)%phrases.length; }
+        setTimeout(tick, deleting ? 40 : 70);
+      }
+      tick();
+      var testimonials=[
+        {q:"Fast and reliable—got funded in two weeks!", c:"- Alex R., ", t:"Forex Trader"},
+        {q:"Their team handled everything. Stress-free.", c:"- Maria K., ", t:"Futures Trader"},
+        {q:"Transparent and professional. Highly recommend.", c:"- Daniel S., ", t:"Crypto Trader"}
+      ];
+      var qEl=document.querySelector('#testimonialRotator [data-quote]');
+      var cEl=document.querySelector('#testimonialRotator [data-cite]');
+      var idx=0; setInterval(function(){ idx=(idx+1)%testimonials.length; qEl.textContent='"'+testimonials[idx].q+'"'; cEl.innerHTML=testimonials[idx].c+ '<span class="font-normal text-brand-text-light">'+ testimonials[idx].t +'</span>'; }, 3500);
+    })();
+  </script>
+{% schema %}
+{
+  "name": "Hero",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Theme settings",
+    "settings": [
+      { "type": "color", "id": "brand_primary", "label": "Primary brand color", "default": "#238636" },
+      { "type": "color", "id": "brand_secondary", "label": "Secondary brand color", "default": "#3B82F6" }
+    ]
+  }
+]

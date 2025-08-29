@@ -1,0 +1,1 @@
+{ "sections": { "pricing": { "type": "pricing" }, "faq": { "type": "faq" }, "cta": { "type": "cta" } }, "order": ["pricing","faq","cta"] }

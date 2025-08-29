@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "features": { "type": "features" },
+    "how": { "type": "how-it-works" },
+    "achievements": { "type": "achievements" },
+    "pricing": { "type": "pricing" },
+    "testimonials": { "type": "testimonials" },
+    "faq": { "type": "faq" },
+    "cta": { "type": "cta" }
+  },
+  "order": ["hero","features","how","achievements","pricing","testimonials","faq","cta"]
+}
